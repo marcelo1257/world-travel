@@ -1,0 +1,23 @@
+<header class="header">
+  <div class="container">
+    <a class="logotipo" routerLink="/" routerLinkActive="actual">
+      <img src="/icons/globe.svg" alt="World Travel" />
+      <h1>World Travel</h1>
+    </a>
+
+    <nav class="paginas">
+      <a routerLink="/" routerLinkActive="actual" [routerLinkActiveOptions]="{ exact: true }"
+        >Home</a
+      >
+      <a routerLink="/countries" routerLinkActive="actual">Countries</a>
+      <a routerLink="/routes" routerLinkActive="actual">Routes</a>
+      <a routerLink="/activities" routerLinkActive="actual">Activities</a>
+      <a routerLink="/profile" routerLinkActive="actual">Profile</a>
+    </nav>
+
+    <div class="entrar-registar">
+      <button class="btn-entrar">Entrar</button>
+      <button class="btn-registar">Registar</button>
+    </div>
+  </div>
+</header>

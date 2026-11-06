@@ -1,1 +1,65 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+  --color-primary: #2878c8;
+  --color-primary-dark: #173b67;
+  --color-background: #dfe6f1;
+  --color-background-blur: rgb(255, 255, 255, 0.08);
+  --color-text: #ffffff;
+  --color-text-muted: #718096;
+  --color-border: #e2e8f0;
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+
+  --shadow-card: 0 4px 20px rgba(23, 59, 103, 0.08);
+
+  --container-width: 1200px;
+}
+
+html,
+body {
+  width: 100%;
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--color-background);
+  background-image: url('/images/background/background_1.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+/* Botões globais */
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  padding: 12px 24px;
+
+  background: var(--color-primary);
+  color: white;
+
+  border: 1px solid var(--color-primary);
+  border-radius: 8px;
+
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+
+  cursor: pointer;
+  transition: all 0.25s ease;
+
+  &:hover {
+    background: var(--color-primary-dark);
+    border-color: var(--color-primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 12px rgba(23, 59, 103, 0.15);
+  }
+}
