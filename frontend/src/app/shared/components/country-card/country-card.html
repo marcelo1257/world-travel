@@ -1,1 +1,8 @@
-<p>country</p>
+<div>
+  <img
+    [src]="'https://flagcdn.com/w80/' + country().alpha2code + '.png'"
+    [alt]="'Bandeira de ' + country().name"
+  /><span
+    >{{ country().name }} {{ country().alpha3code }} {{ country().capital }} {{ country().region }}
+  </span>
+</div>

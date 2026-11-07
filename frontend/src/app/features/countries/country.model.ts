@@ -1,7 +1,8 @@
 export interface Country {
   id: number;
-  name: string;
-  code: string; //alpha3
-  url_svg: string;
-  continent: string;
+  name: string; //name
+  alpha3code: string; //alpha3Code
+  alpha2code: string; //flag
+  region: string; //region
+  capital: string; //capital
 }

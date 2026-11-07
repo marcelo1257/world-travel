@@ -1,7 +1,9 @@
-<app-header />
+<body [style.background-image]="'url(/images/background/background_' + backgroundNumber + '.jpg)'">
+  <app-header />
 
-<main>
-  <router-outlet />
-</main>
+  <main>
+    <router-outlet />
+  </main>
 
-<app-footer />
+  <app-footer />
+</body>

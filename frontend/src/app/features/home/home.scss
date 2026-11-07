@@ -8,23 +8,23 @@
 }
 
 section {
-  width: 100%;
+  width: 90%;
   box-sizing: border-box;
 }
 
 .countries-section,
 .routes-section,
 .activities-section {
-  // max-width: var(--container-width);
-  margin: 5px auto;
+  margin: 10px auto;
   padding: 90px 24px;
   position: relative;
   height: 85vh;
+  border-radius: 10%;
 
-  border-style: solid;
-  border-color: black;
-  border-width: 2px;
-  border-radius: 50px;
+  background: var(--color-background-blur);
+
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
 }
 
 .countries-content h2,
@@ -40,7 +40,6 @@ section {
 .countries-content p,
 .routes-content p,
 .activities-content p {
-  max-width: 700px;
   margin: 0;
   color: white;
   font-size: 1.05rem;
@@ -95,19 +94,20 @@ section {
 .filters {
   display: flex;
   flex-wrap: wrap;
-  gap: 12px;
-  margin-top: 32px;
+  justify-content: center;
+  gap: 5px;
+  margin-top: 20px;
   margin-bottom: 35px;
 
   button {
-    padding: 10px 22px;
+    padding: 3px 7px;
     border: 1px solid var(--color-border);
     border-radius: 30px;
 
     background: var(--color-primary-dark);
     color: var(--color-text);
 
-    font-size: 0.95rem;
+    font-size: 0.8rem;
     font-weight: 500;
     cursor: pointer;
     transition: all 0.2s ease;
