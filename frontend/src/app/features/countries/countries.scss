@@ -1,0 +1,16 @@
+@use '../home/home.scss';
+
+main {
+  padding: 20px;
+  width: auto;
+  height: 100vh auto;
+}
+
+.loading-page,
+.error-page {
+  height: 100vh;
+}
+
+span {
+  color: var(--color-text);
+}

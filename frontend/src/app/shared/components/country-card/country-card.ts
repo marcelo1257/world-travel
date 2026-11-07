@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, input } from '@angular/core';
+import { Country } from '../../../features/countries/country.model';
 
 @Component({
   selector: 'app-country-card',
@@ -6,4 +7,6 @@ import { Component } from '@angular/core';
   templateUrl: './country-card.html',
   styleUrl: './country-card.scss',
 })
-export class CountryCard {}
+export class CountryCard {
+  country = input.required<Country>();
+}

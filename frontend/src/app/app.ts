@@ -11,4 +11,6 @@ import { Footer } from './shared/components/footer/footer';
 })
 export class App {
   protected readonly title = signal('World Travel');
+
+  backgroundNumber = Math.floor(Math.random() * 6) + 1;
 }
