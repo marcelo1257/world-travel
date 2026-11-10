@@ -1,3 +1,64 @@
-span {
+:host {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  width: 20%;
+  height: 500px;
+
+  border-color: rgb(0, 0, 0);
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 0;
+}
+
+header {
+  margin-bottom: auto;
+  margin-top: 10px;
+  width: 80%;
+  justify-self: center;
+  text-align: center;
+  font-size: x-small;
+  color: var(--color-text);
+  border-radius: 50%;
+
+  backdrop-filter: blur(5px);
+}
+
+h1 {
+  margin: 2%;
+  text-decoration: underline;
+}
+
+h2 {
+  margin: 2%;
+}
+
+.country-info {
+  display: flex;
+  width: 100%;
+  margin-bottom: -1px;
+
+  border-color: rgb(0, 0, 0);
+  border-width: 1px;
+  border-style: solid;
+}
+
+.country-info img {
+  height: 100%;
+  width: 30%;
+
+  border-color: rgb(0, 0, 0);
+  border-width: 1px;
+  border-style: solid;
+}
+
+.country-info p {
+  margin: 5px 0px 5px 10px;
+  color: var(--color-text);
+}
+
+.image-rights p {
+  margin: 0;
   color: var(--color-text);
 }

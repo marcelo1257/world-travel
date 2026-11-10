@@ -1,30 +1,23 @@
-<main class="countries-page">
-  <div class="filters">
-    @for (button of filters; track button.id) {
-      <button (click)="selectedRegion.set(button.name)">{{ button.placeholder }}</button>
-    }
-  </div>
-  <div>
-    @switch (status()) {
-      @case ('loading') {
-        <div class="loading-page">
-          <span>Loading Countries</span>
-        </div>
-      }
-      @case ('success') {
-        <div class="success-page">
-          <ul>
-            @for (country of filteredCountries(); track country.id) {
-              <app-country-card [country]="country" />
-            }
-          </ul>
-        </div>
-      }
-      @case ('error') {
-        <div class="error-page">
-          <span>Not possible to load countries. Try again later.</span>
-        </div>
-      }
-    }
-  </div>
-</main>
+<app-filters (regionChange)="regionFiltered($event)" />
+
+@switch (status()) {
+  @case ('loading') {
+    <div class="loading-page">
+      <span>Loading Countries</span>
+    </div>
+  }
+  @case ('success') {
+    <div>
+      <ul class="success-page">
+        @for (country of countries(); track country.id) {
+          <app-country-card [country]="country" />
+        }
+      </ul>
+    </div>
+  }
+  @case ('error') {
+    <div class="error-page">
+      <span>Not possible to load countries. Try again later.</span>
+    </div>
+  }
+}

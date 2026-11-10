@@ -1,12 +1,23 @@
 import { Request, Response } from "express";
-import { getCountries } from "./countries.service";
+import { CountriesQueryParams, getCountries } from "./countries.service";
 
 export async function getCountriesController(
   req: Request,
   res: Response,
 ): Promise<void> {
   try {
-    const countries = await getCountries();
+    const filters: CountriesQueryParams = {
+      region:
+        typeof req.query.region === "string" ? req.query.region : undefined,
+
+      limit:
+        typeof req.query.limit === "string"
+          ? Number(req.query.limit)
+          : undefined,
+
+      mostPopular: req.query.mostPopular === "true",
+    };
+    const countries = await getCountries(filters);
 
     res.status(200).json(countries);
   } catch (error) {
