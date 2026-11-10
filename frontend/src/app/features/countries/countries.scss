@@ -1,16 +1,18 @@
-@use '../home/home.scss';
-
-main {
-  padding: 20px;
-  width: auto;
-  height: 100vh auto;
-}
-
 .loading-page,
 .error-page {
-  height: 100vh;
+  height: auto;
 }
 
 span {
   color: var(--color-text);
+}
+
+ul {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
+  padding: 0%;
+  margin: 5px;
 }

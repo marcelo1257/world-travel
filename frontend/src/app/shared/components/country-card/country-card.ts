@@ -1,5 +1,5 @@
 import { Component, input } from '@angular/core';
-import { Country } from '../../../features/countries/country.model';
+import { Country } from '../../../features/countries/countries.model';
 
 @Component({
   selector: 'app-country-card',

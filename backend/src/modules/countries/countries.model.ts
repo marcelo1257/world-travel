@@ -4,5 +4,6 @@ export interface Country {
   alpha3code: string;
   alpha2code: string;
   region: string;
-  capital: string | null;
+  capital: string;
+  likes: number;
 }

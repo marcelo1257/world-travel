@@ -1,0 +1,5 @@
+<div class="filters">
+  @for (button of filters(); track button.id) {
+    <button (click)="filterDetection(button.name)">{{ button.placeholder }}</button>
+  }
+</div>

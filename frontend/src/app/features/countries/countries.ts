@@ -1,10 +1,11 @@
-import { Component, computed, inject, OnInit, signal } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import { CountriesService } from './countries.service';
 import { CountryCard } from '../../shared/components/country-card/country-card';
+import { Filters } from '../../shared/tools/filters/filters';
 
 @Component({
   selector: 'app-countries',
-  imports: [CountryCard],
+  imports: [CountryCard, Filters],
   templateUrl: './countries.html',
   styleUrl: './countries.scss',
 })
@@ -14,30 +15,28 @@ export class Countries implements OnInit {
   countries = this.countriesService.countriesReadOnly;
   status = this.countriesService.status;
 
+  selectedRegion = signal<string | undefined>('All');
+
   ngOnInit() {
-    console.log('ngOnInit Countries');
     this.countriesService.loadCountries();
   }
 
-  filters = [
-    { id: 1, name: 'All', placeholder: 'All' },
-    { id: 2, name: 'Asia', placeholder: 'Asia' },
-    { id: 3, name: 'Africa', placeholder: 'Africa' },
-    { id: 4, name: 'Europe', placeholder: 'Europe' },
-    { id: 5, name: 'Americas', placeholder: 'America' },
-    { id: 6, name: 'Oceania', placeholder: 'Oceânia' },
-  ];
+  regionFiltered(region?: string) {
+    this.selectedRegion.set(region);
 
-  selectedRegion = signal<string>('All');
-
-  filteredCountries = computed(() => {
-    const countries = this.countries();
-    const region = this.selectedRegion();
-
-    if (this.selectedRegion() === 'All') {
-      return countries;
-    }
-
-    return countries.filter((country) => country.region === region);
-  });
+    return this.countriesService.loadCountries({
+      region: region === 'All' ? undefined : region,
+      mostPopular: false,
+    });
+  }
 }
+// filteredCountries = computed(() => {
+//   const countries = this.countries();
+//   const region = this.selectedRegion();
+
+//   if (region === 'All') {
+//     return countries;
+//   }
+
+//   return countries.filter((country) => country.region === region);
+// });
