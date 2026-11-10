@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
-import { CountriesQueryParams, getCountries } from "./countries.service";
+import { getCountries } from "./countries.service";
+import { CountriesQueryParams } from "../../database/interfaces";
 
 export async function getCountriesController(
   req: Request,

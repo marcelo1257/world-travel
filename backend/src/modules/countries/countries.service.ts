@@ -1,11 +1,5 @@
 import pool from "../../config/database";
-import { Country } from "./countries.model";
-
-export interface CountriesQueryParams {
-  region?: any;
-  limit?: number;
-  mostPopular?: boolean;
-}
+import { CountriesQueryParams, Country } from "../../database/interfaces";
 
 export async function getCountries(
   filters: CountriesQueryParams = {},

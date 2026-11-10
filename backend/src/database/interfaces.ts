@@ -27,3 +27,19 @@ export interface imageDataFromAPI {
     };
   }[];
 }
+
+export interface Country {
+  id: number;
+  name: string;
+  alpha3code: string;
+  alpha2code: string;
+  region: string;
+  capital: string;
+  likes: number;
+}
+
+export interface CountriesQueryParams {
+  region?: any;
+  limit?: number;
+  mostPopular?: boolean;
+}
