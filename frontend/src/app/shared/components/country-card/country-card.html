@@ -1,19 +1,21 @@
-<header class="card-title">
-  <h2>{{ country().alpha3code }}</h2>
-  <h1>{{ country().name }}</h1>
-</header>
-<div class="card-content"></div>
-<footer class="country-info">
-  <img
-    [src]="'https://flagcdn.com/w80/' + country().alpha2code + '.png'"
-    [alt]="'Bandeira de ' + country().name"
-  />
-  <div>
-    <p>Capital: {{ country().capital }}</p>
-    <p>Region: {{ country().region }}</p>
-    <p>{{ country().id }}</p>
-  </div>
-</footer>
-<div class="image-rights">
-  <p>Image info · Author · Rights</p>
-</div>
+<button class="all-card" (click)="countrySelected(country().id)">
+  <header class="card-title">
+    <h2>{{ country().alpha3code }}</h2>
+    <h1>{{ country().name }}</h1>
+  </header>
+  <div class="card-content"></div>
+  <footer class="country-info">
+    <img
+      [src]="'https://flagcdn.com/w80/' + country().alpha2code + '.png'"
+      [alt]="'Bandeira de ' + country().name"
+    />
+    <div>
+      <p>Capital: {{ country().capital }}</p>
+      <p>Region: {{ country().region }}</p>
+    </div>
+
+    <div class="image-rights">
+      <p>Image info · Author · Rights</p>
+    </div>
+  </footer>
+</button>

@@ -3,6 +3,7 @@ import cors from "cors";
 import express from "express";
 import { runDatabase } from "./database/init";
 import countriesRoutes from "./modules/countries/countries.routes";
+import countrycardRoutes from "./modules/country-card/country-card.routes";
 // import activitiesRoutes from "./modules/activities/activities.routes";
 // import routesRoutes from "./modules/routes/routes.routes";
 // import perfilRoutes from "./modules/perfil/perfil.routes";
@@ -32,6 +33,8 @@ app.use(
 );
 
 app.use("/api/countries", countriesRoutes);
+
+app.use("api/countrycard", countrycardRoutes);
 
 // app.use("/api/activities", activitiesRoutes);
 
