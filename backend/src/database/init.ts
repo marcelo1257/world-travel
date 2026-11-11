@@ -3,17 +3,18 @@ import { CountryAPI, imageDataFromAPI } from "./interfaces";
 
 export async function runDatabase(): Promise<void> {
   await initializeDatabase();
-  await importBackgroundImages();
 
-  const findCountries = await needCountriesImport();
+  const needCountries = await needCountriesImport();
 
-  if (findCountries) {
+  if (needCountries) {
     console.log("Import needed");
     await importCountries();
-    // await importBackgroundImages();
   } else {
-    return console.log("No import needed");
+    console.log("No country import needed");
+    await needImageBackground();
   }
+
+  console.log("Initialization finish");
 }
 
 async function initializeDatabase(): Promise<void> {
@@ -138,12 +139,43 @@ async function importCountries(): Promise<void> {
   }
 }
 
-async function importBackgroundImages() {
-  try {
-    const countriesList = await pool.query(
-      `SELECT DISTINCT id, name, capital FROM countries`,
+async function needImageBackground() {
+  const countriesToImportBackground = await pool.query(
+    `SELECT
+          c.id AS country_id,
+          COUNT(ci.id) AS total_images
+      FROM countries c
+      LEFT JOIN countries_images ci
+          ON ci.country_id = c.id
+      GROUP BY c.id
+      HAVING COUNT(ci.id) < 5`,
+  );
+
+  const _countriesToImportBackground = countriesToImportBackground.rows;
+
+  if (countriesToImportBackground.rows.length === 0) {
+    return console.log("No background images required");
+  } else {
+    let _countriesPlaceholders = [];
+    console.log(
+      "Need countries background images: " +
+        countriesToImportBackground.rows.length,
     );
-    // console.log(countriesList);
+
+    for (const country of _countriesToImportBackground) {
+      _countriesPlaceholders.push(country.country_id);
+    }
+    await importBackgroundImages(_countriesPlaceholders);
+  }
+}
+
+async function importBackgroundImages(_countriesPlaceholders: any) {
+  try {
+    const countriesPlaceholders = _countriesPlaceholders.toString();
+
+    const selectQuery = `SELECT DISTINCT id, name, capital FROM countries WHERE id IN (${countriesPlaceholders})`;
+
+    const countriesList = await pool.query(selectQuery);
 
     const _countriesList = countriesList.rows;
 
@@ -182,7 +214,7 @@ async function importBackgroundImages() {
       const data = await response.json();
 
       if (!data.query?.pages) {
-        console.log("No images found:", searchParamCountry);
+        // console.log("No images found:", searchParamCountry);
         continue;
       }
 
@@ -261,7 +293,7 @@ async function importBackgroundImages() {
     `);
 
     const _imageFailsCount = imageFailsCount.rows[0].count;
-    console.log("Countries image failed: " + _imageFailsCount);
+    console.log("Countries without images: " + _imageFailsCount);
   } catch (error) {
     console.error("Error testing Wikimedia API:", error);
   }
