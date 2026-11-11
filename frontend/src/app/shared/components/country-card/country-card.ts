@@ -9,4 +9,8 @@ import { Country } from '../../../features/countries/countries.model';
 })
 export class CountryCard {
   country = input.required<Country>();
+
+  countrySelected(countryId: number) {
+    console.log(countryId);
+  }
 }

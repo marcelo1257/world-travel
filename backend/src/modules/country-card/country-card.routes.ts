@@ -1,8 +1,8 @@
 import { Router } from "express";
-import { getCountryCardController } from "./country-card.controller";
+import { getCountryCardBackgroundController } from "./country-card.controller";
 
 const router = Router();
 
-router.get("/", getCountryCardController);
+router.get("/backgrounds", getCountryCardBackgroundController);
 
 export default router;
