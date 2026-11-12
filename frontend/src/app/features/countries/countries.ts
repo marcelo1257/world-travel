@@ -14,7 +14,7 @@ export class Countries implements OnInit {
   private countriesService = inject(CountriesService);
   private countryCardService = inject(CountryCardService);
 
-  countries = this.countriesService.countriesReadOnly;
+  countries = this.countriesService.countries;
   status = this.countriesService.status;
 
   selectedRegion = signal<string | undefined>('All');

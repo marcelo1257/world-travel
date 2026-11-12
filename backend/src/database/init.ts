@@ -1,6 +1,8 @@
 import pool from "../config/database";
 import { CountryAPI, imageDataFromAPI } from "./interfaces";
 
+type status = "loading" | "sucess";
+
 export async function runDatabase(): Promise<void> {
   await initializeDatabase();
 
@@ -12,6 +14,7 @@ export async function runDatabase(): Promise<void> {
   } else {
     console.log("No country import needed");
     await needImageBackground();
+    console.log("Background Images Load");
   }
 
   console.log("Initialization finish");

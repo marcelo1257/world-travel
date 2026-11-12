@@ -10,7 +10,7 @@ import { filters } from './filters.model';
 })
 export class Filters {
   private CountriesService = inject(CountriesService);
-  countries = this.CountriesService.countriesReadOnly;
+  countries = this.CountriesService.countries;
 
   filters = input(filters);
 

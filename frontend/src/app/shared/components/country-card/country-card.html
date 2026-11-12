@@ -5,16 +5,12 @@
   @case ('sucess') {
     @switch (origin()) {
       @case ('countries') {
-        <button
-          class="all-card countries"
-          (click)="countrySelected(country().id)"
-          [style.background-image]="'url(' + backgroundImage() + ')'"
-        >
+        <button class="all-card countries" (click)="countrySelected(country().id)">
+          <img src="{{ backgroundImage() }}" alt="{{ country().name }} landscape" />
           <header class="card-title">
             <h2>{{ country().alpha3code }}</h2>
             <h1>{{ country().name }}</h1>
           </header>
-          <div class="card-content"></div>
           <footer class="country-info">
             <img
               [src]="'https://flagcdn.com/w80/' + country().alpha2code + '.png'"
@@ -32,16 +28,12 @@
         </button>
       }
       @case ('popular') {
-        <button
-          class="all-card popular"
-          (click)="countrySelected(country().id)"
-          [style.background-image]="'url(' + backgroundImage() + ')'"
-        >
+        <button class="all-card popular" (click)="countrySelected(country().id)">
           <header class="card-title">
             <h2>{{ country().alpha3code }}</h2>
             <h1>{{ country().name }}</h1>
           </header>
-          <div class="card-content"></div>
+          <img src="{{ backgroundImage() }}" alt="{{ country().name }} landscape" />
           <footer class="country-info">
             <img
               [src]="'https://flagcdn.com/w80/' + country().alpha2code + '.png'"
@@ -53,7 +45,11 @@
             </div>
 
             <div class="image-rights">
-              <p>Image info · Author · Rights</p>
+              <a>Image info</a>
+              <span>·</span>
+              <a>Author</a>
+              <span>·</span>
+              <a>Rights</a>
             </div>
           </footer>
         </button>

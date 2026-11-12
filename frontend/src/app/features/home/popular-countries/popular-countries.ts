@@ -13,7 +13,7 @@ import { CountryCard } from '../../../shared/components/country-card/country-car
 export class PopularCountries implements OnInit {
   private countriesService = inject(CountriesService);
 
-  countries = this.countriesService.countriesReadOnly;
+  countries = this.countriesService.countries;
 
   selectedRegion = signal<string | undefined>('All');
   status = this.countriesService.status;

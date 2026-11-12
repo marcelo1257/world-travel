@@ -1,7 +1,9 @@
 <section class="countries-section">
-  <h2>Popular Countries</h2>
-  <p>The world is made up of countries, but it's the experiences that make them unforgettable.</p>
-  <app-filters (regionChange)="regionFiltered($event)" />
+  <div class="section-header">
+    <h2>Popular Countries</h2>
+    <p>The world is made up of countries, but it's the experiences that make them unforgettable.</p>
+    <app-filters (regionChange)="regionFiltered($event)" />
+  </div>
   <div>
     @switch (status()) {
       @case ('loading') {

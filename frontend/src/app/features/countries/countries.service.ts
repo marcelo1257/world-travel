@@ -1,7 +1,7 @@
 import { inject, Injectable, signal } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable, Subject, of } from 'rxjs';
-import { switchMap, tap, catchError, startWith } from 'rxjs/operators';
+import { switchMap, tap, catchError } from 'rxjs/operators';
 import { Country } from './countries.model';
 
 type LoadingStatus = 'loading' | 'success' | 'error';
@@ -20,7 +20,7 @@ export class CountriesService {
   private apiUrl = 'http://localhost:3000/api/countries';
 
   private _countries = signal<Country[]>([]);
-  countriesReadOnly = this._countries.asReadonly();
+  countries = this._countries.asReadonly();
 
   private _status = signal<LoadingStatus>('loading');
   status = this._status.asReadonly();
@@ -29,14 +29,12 @@ export class CountriesService {
 
   private countriesSubscription = this.paramsSubject
     .pipe(
-      startWith(undefined),
-
       tap(() => this._status.set('loading')),
 
       switchMap((params) =>
         this.getCountries(params).pipe(
-          tap((countries) => {
-            this._countries.set(countries);
+          tap((data) => {
+            this._countries.set(data);
             this._status.set('success');
           }),
           catchError((error) => {
