@@ -3,7 +3,6 @@ import { RouterLink } from '@angular/router';
 import { Filters } from '../../../shared/tools/filters/filters';
 import { CountriesService } from '../../countries/countries.service';
 import { CountryCard } from '../../../shared/components/country-card/country-card';
-import { filter } from 'rxjs';
 
 @Component({
   selector: 'app-popular-countries',
@@ -12,7 +11,7 @@ import { filter } from 'rxjs';
   styleUrl: './popular-countries.scss',
 })
 export class PopularCountries implements OnInit {
-  countriesService = inject(CountriesService);
+  private countriesService = inject(CountriesService);
 
   countries = this.countriesService.countriesReadOnly;
 

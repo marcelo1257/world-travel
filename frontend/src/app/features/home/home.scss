@@ -1,6 +1,7 @@
 :host {
   display: block;
   color: var(--color-text);
+  width: 100%;
 }
 
 section {
@@ -8,13 +9,22 @@ section {
   box-sizing: border-box;
 }
 
+.success-page {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+
+  padding: 0% 30px;
+}
+
 .countries-section,
 .routes-section,
 .activities-section {
-  margin: 10px auto;
-  padding: 90px 24px;
+  margin: 30px;
   position: relative;
-  height: 85vh;
+  width: auto;
+  height: auto;
   border-radius: 10%;
 
   background: var(--color-background-blur);
@@ -23,9 +33,9 @@ section {
   -webkit-backdrop-filter: blur(4px);
 }
 
-.countries-content h2,
-.routes-content h2,
-.activities-content h2 {
+.countries-section h2,
+.routes-section h2,
+.activities-section h2 {
   margin: 0 0 16px;
   font-size: clamp(2rem, 3vw, 2.8rem);
   font-weight: 700;
@@ -33,9 +43,9 @@ section {
   text-align: center;
 }
 
-.countries-content p,
-.routes-content p,
-.activities-content p {
+.countries-section p,
+.routes-section p,
+.activities-section p {
   margin: 0;
   color: white;
   font-size: 1.05rem;
@@ -77,6 +87,11 @@ section {
     font-size: 1.2rem;
     line-height: 1.7;
   }
+}
+
+.loading-page,
+.error-page {
+  text-align: center;
 }
 
 @media (max-width: 768px) {

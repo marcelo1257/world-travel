@@ -1,31 +1,30 @@
 <section class="countries-section">
-  <div class="countries-content">
-    <h2>Popular Countries</h2>
-    <p>The world is made up of countries, but it's the experiences that make them unforgettable.</p>
-    <app-filters (regionChange)="regionFiltered($event)" />
-    <div>
-      @switch (status()) {
-        @case ('loading') {
-          <div class="loading-page">
-            <span>Loading Countries</span>
-          </div>
-        }
-        @case ('success') {
-          <div class="success-page">
-            <ul>
-              @for (country of countries(); track country.id) {
-                <app-country-card [country]="country" />
-              }
-            </ul>
-          </div>
-        }
-        @case ('error') {
-          <div class="error-page">
-            <span>Not possible to load countries. Try again later.</span>
-          </div>
-        }
+  <h2>Popular Countries</h2>
+  <p>The world is made up of countries, but it's the experiences that make them unforgettable.</p>
+  <app-filters (regionChange)="regionFiltered($event)" />
+  <div>
+    @switch (status()) {
+      @case ('loading') {
+        <div class="loading-page popular">
+          <p>Loading Countries</p>
+        </div>
       }
-    </div>
+      @case ('success') {
+        <div>
+          <ul class="success-page popular">
+            @for (country of countries(); track country.id) {
+              <app-country-card [country]="country" [origin]="'popular'" />
+            }
+          </ul>
+        </div>
+      }
+      @case ('error') {
+        <div class="error-page popular">
+          <p>Not possible to load countries. Try again later.</p>
+        </div>
+      }
+    }
   </div>
+
   <a routerLink="/countries" class="btn-primary"> More Countries </a>
 </section>
