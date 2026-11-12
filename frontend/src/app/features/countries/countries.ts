@@ -2,6 +2,7 @@ import { Component, inject, OnInit, signal } from '@angular/core';
 import { CountriesService } from './countries.service';
 import { CountryCard } from '../../shared/components/country-card/country-card';
 import { Filters } from '../../shared/tools/filters/filters';
+import { CountryCardService } from '../../shared/components/country-card/country-card.service';
 
 @Component({
   selector: 'app-countries',
@@ -11,6 +12,7 @@ import { Filters } from '../../shared/tools/filters/filters';
 })
 export class Countries implements OnInit {
   private countriesService = inject(CountriesService);
+  private countryCardService = inject(CountryCardService);
 
   countries = this.countriesService.countriesReadOnly;
   status = this.countriesService.status;
@@ -19,6 +21,9 @@ export class Countries implements OnInit {
 
   ngOnInit() {
     this.countriesService.loadCountries();
+    if (this.countryCardService.backgroundList().size === 0) {
+      this.countryCardService.loadBackgroundsNeeded();
+    }
   }
 
   regionFiltered(region?: string) {

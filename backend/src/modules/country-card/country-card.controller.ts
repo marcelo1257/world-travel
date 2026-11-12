@@ -1,15 +1,18 @@
 import { Request, Response } from "express";
+import { getBackgoundImages } from "./country-card.service";
 
 export async function getCountryCardBackgroundController(
   req: Request,
   res: Response,
-): Promise<void> {
+) {
   try {
-    console.log("getCountryCardBackgroundController");
+    const backgroundList = await getBackgoundImages();
 
-    res.status(200).json();
+    return res.status(200).json(backgroundList.rows);
   } catch (error) {
-    res.status(500).json({
+    console.error(error);
+
+    return res.status(500).json({
       message: "Error retrieving country card background",
     });
   }

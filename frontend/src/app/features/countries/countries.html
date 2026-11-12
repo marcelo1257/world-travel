@@ -2,22 +2,22 @@
 
 @switch (status()) {
   @case ('loading') {
-    <div class="loading-page">
-      <span>Loading Countries</span>
+    <div class="loading-page countries">
+      <p>Loading Countries</p>
     </div>
   }
   @case ('success') {
     <div>
-      <ul class="success-page">
+      <ul class="success-page countries">
         @for (country of countries(); track country.id) {
-          <app-country-card [country]="country" />
+          <app-country-card [country]="country" [origin]="'countries'" />
         }
       </ul>
     </div>
   }
   @case ('error') {
-    <div class="error-page">
-      <span>Not possible to load countries. Try again later.</span>
+    <div class="error-page countries">
+      <p>Not possible to load countries. Try again later.</p>
     </div>
   }
 }
