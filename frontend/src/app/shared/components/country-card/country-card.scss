@@ -1,6 +1,5 @@
 :host {
   display: inline-block;
-  flex-wrap: wrap;
 
   width: 20%;
   height: auto;
@@ -48,17 +47,7 @@
   // border-style: solid;
 }
 
-.countries header {
-  margin-bottom: auto;
-  width: 80%;
-  justify-self: center;
-  text-align: center;
-  font-size: x-small;
-  color: var(--color-text);
-  border-radius: 50%;
-}
-
-.popular header {
+header {
   margin-bottom: auto;
   width: 80%;
   justify-self: center;
@@ -69,12 +58,7 @@
 }
 
 h1 {
-  margin: 2%;
   text-decoration: underline;
-}
-
-h2 {
-  margin: 2%;
 }
 
 img {

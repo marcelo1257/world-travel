@@ -1,12 +1,16 @@
 @switch (status()) {
   @case ('loading') {
-    <p>Loading Backgrounds</p>
+    <p></p>
   }
-  @case ('sucess') {
+  @case ('success') {
     @switch (origin()) {
       @case ('countries') {
         <button class="all-card countries" (click)="countrySelected(country().id)">
-          <img src="{{ backgroundImage() }}" alt="{{ country().name }} landscape" />
+          <img
+            #countryImage
+            [attr.data-src]="backgroundImage()"
+            alt="{{ country().name }} landscape"
+          />
           <header class="card-title">
             <h2>{{ country().alpha3code }}</h2>
             <h1>{{ country().name }}</h1>
@@ -15,6 +19,7 @@
             <img
               [src]="'https://flagcdn.com/w80/' + country().alpha2code + '.png'"
               [alt]="'Bandeira de ' + country().name"
+              loading="lazy"
             />
             <div>
               <p>Capital: {{ country().capital }}</p>
@@ -33,11 +38,16 @@
             <h2>{{ country().alpha3code }}</h2>
             <h1>{{ country().name }}</h1>
           </header>
-          <img src="{{ backgroundImage() }}" alt="{{ country().name }} landscape" />
+          <img
+            #countryImage
+            [attr.data-src]="backgroundImage()"
+            alt="{{ country().name }} landscape"
+          />
           <footer class="country-info">
             <img
               [src]="'https://flagcdn.com/w80/' + country().alpha2code + '.png'"
               [alt]="'Bandeira de ' + country().name"
+              loading="lazy"
             />
             <div>
               <p>Capital: {{ country().capital }}</p>
@@ -45,9 +55,9 @@
             </div>
 
             <div class="image-rights">
-              <a>Image info</a>
-              <span>·</span>
               <a>Author</a>
+              <span>·</span>
+              <a>Image info</a>
               <span>·</span>
               <a>Rights</a>
             </div>

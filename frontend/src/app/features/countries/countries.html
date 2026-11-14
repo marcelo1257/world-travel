@@ -9,10 +9,11 @@
   @case ('success') {
     <div>
       <ul class="success-page countries">
-        @for (country of countries(); track country.id) {
+        @for (country of visibleCountries(); track country.id) {
           <app-country-card [country]="country" [origin]="'countries'" />
         }
       </ul>
+      <div #scrollTrigger class="scroll-trigger"></div>
     </div>
   }
   @case ('error') {

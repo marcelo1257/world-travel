@@ -11,6 +11,8 @@ export async function runDatabase(): Promise<void> {
   if (needCountries) {
     console.log("Import needed");
     await importCountries();
+    await needImageBackground();
+    console.log("Background Images Load");
   } else {
     console.log("No country import needed");
     await needImageBackground();

@@ -1,4 +1,4 @@
-import { inject, Injectable, signal } from '@angular/core';
+import { computed, ElementRef, inject, Injectable, signal, ViewChild } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable, Subject, of } from 'rxjs';
 import { switchMap, tap, catchError } from 'rxjs/operators';
@@ -18,6 +18,8 @@ interface CountriesQueryParams {
 export class CountriesService {
   private http = inject(HttpClient);
   private apiUrl = 'http://localhost:3000/api/countries';
+
+  allVisibleCountries = signal<boolean>(false);
 
   private _countries = signal<Country[]>([]);
   countries = this._countries.asReadonly();

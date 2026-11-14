@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { CountriesService } from '../../../features/countries/countries.service';
 
 @Component({
   selector: 'app-footer',
@@ -6,4 +7,8 @@ import { Component } from '@angular/core';
   templateUrl: './footer.html',
   styleUrl: './footer.scss',
 })
-export class Footer {}
+export class Footer {
+  private countriesService = inject(CountriesService);
+
+  allVisibleCountries = this.countriesService.allVisibleCountries;
+}

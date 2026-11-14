@@ -1,6 +1,14 @@
-<footer class="footer">
-  <div class="scroll-indicator">
-    <span>Scroll to explore</span>
-    <span class="scroll-arrow">↓</span>
-  </div>
-</footer>
+@if (allVisibleCountries()) {
+  <footer class="footer">
+    <div class="scroll-indicator">
+      <span>All countries loaded</span>
+    </div>
+  </footer>
+} @else {
+  <footer class="footer">
+    <div class="scroll-indicator">
+      <span>Scroll to explore</span>
+      <span class="scroll-arrow">↓</span>
+    </div>
+  </footer>
+}
