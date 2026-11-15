@@ -1,7 +1,5 @@
 import { Component, inject, signal } from '@angular/core';
-import { Event, RouterLink, RouterLinkActive } from '@angular/router';
-import { Authentication } from '../../../core/authentication/authentication';
-import { NgComponentOutlet } from '@angular/common';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 import { AuthenticationService } from '../../../core/authentication/authentication.service';
 
 @Component({
@@ -13,9 +11,8 @@ import { AuthenticationService } from '../../../core/authentication/authenticati
 export class Header {
   private authenticationService = inject(AuthenticationService);
 
-  showAuthenticationPanel(type: 'login' | 'register', event: MouseEvent) {
+  showAuthenticationPanel(type: 'login' | 'register') {
     this.authenticationService._showAuthentication.set(true);
     this.authenticationService._authenticationType.set(type);
-    event.stopPropagation();
   }
 }
