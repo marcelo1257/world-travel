@@ -1,68 +1,14 @@
 @switch (status()) {
   @case ('loading') {
-    <p></p>
+    <p>Loading...</p>
   }
   @case ('success') {
     @switch (origin()) {
       @case ('countries') {
-        <button class="all-card countries" (click)="countrySelected(country().id)">
-          <img
-            #countryImage
-            [attr.data-src]="backgroundImage()"
-            alt="{{ country().name }} landscape"
-          />
-          <header class="card-title">
-            <h2>{{ country().alpha3code }}</h2>
-            <h1>{{ country().name }}</h1>
-          </header>
-          <footer class="country-info">
-            <img
-              [src]="'https://flagcdn.com/w80/' + country().alpha2code + '.png'"
-              [alt]="'Bandeira de ' + country().name"
-              loading="lazy"
-            />
-            <div>
-              <p>Capital: {{ country().capital }}</p>
-              <p>Region: {{ country().region }}</p>
-            </div>
-
-            <div class="image-rights">
-              <p>Image info · Author · Rights</p>
-            </div>
-          </footer>
-        </button>
+        <ng-container *ngTemplateOutlet="countriesCard" />
       }
       @case ('popular') {
-        <button class="all-card popular" (click)="countrySelected(country().id)">
-          <header class="card-title">
-            <h2>{{ country().alpha3code }}</h2>
-            <h1>{{ country().name }}</h1>
-          </header>
-          <img
-            #countryImage
-            [attr.data-src]="backgroundImage()"
-            alt="{{ country().name }} landscape"
-          />
-          <footer class="country-info">
-            <img
-              [src]="'https://flagcdn.com/w80/' + country().alpha2code + '.png'"
-              [alt]="'Bandeira de ' + country().name"
-              loading="lazy"
-            />
-            <div>
-              <p>Capital: {{ country().capital }}</p>
-              <p>Region: {{ country().region }}</p>
-            </div>
-
-            <div class="image-rights">
-              <a>Author</a>
-              <span>·</span>
-              <a>Image info</a>
-              <span>·</span>
-              <a>Rights</a>
-            </div>
-          </footer>
-        </button>
+        <ng-content *ngTemplateOutlet="popularCard" />
       }
     }
   }
@@ -70,3 +16,57 @@
     <p>Error loading countries backgrounds</p>
   }
 }
+
+<ng-template #popularCard>
+  <button class="all-card popular" (click)="countrySelected(country().id)">
+    <header class="card-title">
+      <h2>{{ country().alpha3code }}</h2>
+      <h1>{{ country().name }}</h1>
+    </header>
+    <img #countryImage [attr.data-src]="backgroundImage()" alt="{{ country().name }} landscape" />
+    <footer class="country-info">
+      <img
+        [src]="'https://flagcdn.com/w80/' + country().alpha2code + '.png'"
+        [alt]="'Bandeira de ' + country().name"
+        loading="lazy"
+      />
+      <div>
+        <p>Capital: {{ country().capital }}</p>
+        <p>Region: {{ country().region }}</p>
+      </div>
+
+      <div class="image-rights">
+        <a>Author</a>
+        <span>·</span>
+        <a>Image info</a>
+        <span>·</span>
+        <a>Rights</a>
+      </div>
+    </footer>
+  </button>
+</ng-template>
+
+<ng-template #countriesCard>
+  <button class="all-card countries" (click)="countrySelected(country().id)">
+    <img #countryImage [attr.data-src]="backgroundImage()" alt="{{ country().name }} landscape" />
+    <header class="card-title">
+      <h2>{{ country().alpha3code }}</h2>
+      <h1>{{ country().name }}</h1>
+    </header>
+    <footer class="country-info">
+      <img
+        [src]="'https://flagcdn.com/w80/' + country().alpha2code + '.png'"
+        [alt]="'Bandeira de ' + country().name"
+        loading="lazy"
+      />
+      <div>
+        <p>Capital: {{ country().capital }}</p>
+        <p>Region: {{ country().region }}</p>
+      </div>
+
+      <div class="image-rights">
+        <p>Image info · Author · Rights</p>
+      </div>
+    </footer>
+  </button>
+</ng-template>
