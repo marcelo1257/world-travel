@@ -1,9 +1,14 @@
-<body [style.background-image]="'url(/images/background/background_' + backgroundNumber + '.jpg)'">
+<body
+  [style.background-image]="'url(/images/background/background_' + backgroundNumber + '.jpg)'"
+  (click)="closeAuthentication()"
+>
   <app-header />
-
   <main>
     <router-outlet />
   </main>
 
   <app-footer />
+  @if (showAuthentication()) {
+    <app-authentication />
+  }
 </body>

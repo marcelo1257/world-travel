@@ -1,0 +1,12 @@
+<div class="authentication-modal" (click)="$event.stopPropagation()">
+  @if (authenticationType() === 'login') {
+    <div>
+      <p>authentication login!</p>
+    </div>
+  }
+  @if (authenticationType() === 'register') {
+    <div>
+      <p>authentication register!</p>
+    </div>
+  }
+</div>
