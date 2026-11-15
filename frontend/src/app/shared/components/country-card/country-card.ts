@@ -9,19 +9,18 @@ import {
 } from '@angular/core';
 import { Country } from '../../../features/countries/countries.model';
 import { CountryCardService } from './country-card.service';
-
-type Origin = 'popular' | 'countries';
+import { NgTemplateOutlet } from '@angular/common';
 
 @Component({
   selector: 'app-country-card',
-  imports: [],
+  imports: [NgTemplateOutlet],
   templateUrl: './country-card.html',
   styleUrl: './country-card.scss',
 })
 export class CountryCard implements OnDestroy {
   private countryCardService = inject(CountryCardService);
 
-  origin = input.required<Origin>();
+  origin = input.required<'popular' | 'countries'>();
   country = input.required<Country>();
 
   status = this.countryCardService.backgroundsLoadingStatus;
