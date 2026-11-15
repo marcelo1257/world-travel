@@ -16,8 +16,10 @@
     </nav>
 
     <div class="entrar-registar">
-      <button class="btn-entrar">Entrar</button>
-      <button class="btn-registar">Registar</button>
+      <button class="btn-entrar" (click)="showAuthenticationPanel('login', $event)">Entrar</button>
+      <button class="btn-registar" (click)="showAuthenticationPanel('register', $event)">
+        Registar
+      </button>
     </div>
   </div>
 </header>

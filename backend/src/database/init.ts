@@ -36,11 +36,6 @@ async function initializeDatabase(): Promise<void> {
   `);
 
   await pool.query(`
-    ALTER TABLE countries
-    ADD COLUMN IF NOT EXISTS likes INTEGER NOT NULL DEFAULT 0;
-  `);
-
-  await pool.query(`
     CREATE TABLE IF NOT EXISTS countries_images (
       id INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
       country_id INTEGER NOT NULL,
@@ -56,6 +51,18 @@ async function initializeDatabase(): Promise<void> {
           REFERENCES countries(id)
           ON DELETE CASCADE
       )
+    `);
+
+  await pool.query(`
+    CREATE TABLE IF NOT EXISTS users (
+    id INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    create_at TIMESTAMP,
+    username VARCHAR(50) UNIQUE,
+    email VARCHAR(150) UNIQUE NOT NULL,
+    password VARCHAR(150) NOT NULL,
+    avatar_url TEXT,
+    bio TEXT
+    )
     `);
   console.log("Database initialized successfully.");
 }
