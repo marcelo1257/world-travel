@@ -9,7 +9,7 @@
   align-items: center;
   z-index: 9999;
 
-  pointer-events: auto;
+  pointer-events: none;
 }
 
 .authentication-modal {
@@ -24,6 +24,8 @@
   background-color: aliceblue;
 
   color: red;
+
+  pointer-events: auto;
 
   border-color: red;
   border-style: solid;
