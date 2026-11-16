@@ -1,33 +1,15 @@
-@use '../../features/home/home.scss';
+// @use '../../features/home/home.scss';
+@use '..//authentication/authentication.shared.scss';
 
 :host {
-  display: flex;
   position: fixed;
   inset: 0;
-
-  justify-content: center;
-  align-items: center;
   z-index: 9999;
 
-  pointer-events: none;
-}
-
-.authentication-modal {
   display: flex;
-  position: fixed;
-
   justify-content: center;
-  align-content: center;
+  align-items: center;
 
-  height: 100px;
-  width: 100px;
-  background-color: aliceblue;
-
-  color: red;
-
-  pointer-events: auto;
-
-  border-color: red;
-  border-style: solid;
-  border-width: 1px;
+  padding: 20px;
+  pointer-events: none;
 }
