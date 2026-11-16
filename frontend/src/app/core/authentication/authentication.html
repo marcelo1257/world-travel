@@ -1,12 +1,30 @@
-<div class="authentication-modal" (click)="$event.stopPropagation()">
+<div class="auth-modal" (click)="$event.stopPropagation()">
+  <div class="auth-header">
+    <div class="auth-logo">
+      <div class="auth-logo-icon">
+        <i class="pi pi-globe"></i>
+      </div>
+      World Travel
+    </div>
+    <button class="auth-close" (click)="closeAuth()">&times;</button>
+  </div>
+  <header class="auth-title">
+    <h2>Create your account</h2>
+    <p>Start explore with us today!</p>
+  </header>
   @if (authenticationType() === 'login') {
     <div>
-      <p>authentication login!</p>
+      <app-authentication-login />
     </div>
   }
   @if (authenticationType() === 'register') {
     <div>
-      <p>authentication register!</p>
+      <app-authentication-register />
     </div>
   }
+
+  <footer>
+    <span>Already have an account?</span>
+    <span class="auth-switch"><button>Sign in</button></span>
+  </footer>
 </div>
