@@ -13,14 +13,10 @@
     <p>Start explore with us today!</p>
   </header>
   @if (authenticationType() === 'login') {
-    <div>
-      <app-authentication-login />
-    </div>
+    <app-authentication-login />
   }
   @if (authenticationType() === 'register') {
-    <div>
-      <app-authentication-register />
-    </div>
+    <app-authentication-register />
   }
 
   <footer>

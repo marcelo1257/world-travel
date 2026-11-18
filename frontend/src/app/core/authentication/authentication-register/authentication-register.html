@@ -1,15 +1,113 @@
-<form class="auth-form">
+<form class="auth-form" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
   <div class="auth-field">
-    <label>Username</label>
-    <input type="text" placeholder="Username" />
+    <label
+      >Username
+      <span class="fieldRequired">
+        @if (this.registerForm.controls.username.hasError('required')) {
+          <span [style.color]="'red'" (click)="alertRequired()">*</span>
+        }
+      </span>
+    </label>
+    <div class="auth-input">
+      <input
+        type="text"
+        placeholder="Username"
+        id="username"
+        formControlName="username"
+        (input)="usernameValid.set(null)"
+      />
+      @if (this.registerForm.controls.username.valid) {
+        <button
+          class="pi pi-check-circle"
+          type="button"
+          id="checkUsername"
+          (click)="checkFields('username')"
+          [class.valid]="usernameValid() === true"
+          [class.invalid]="usernameValid() === false"
+        ></button>
+      }
+    </div>
+    @if (this.registerForm.controls.username.hasError('minlength')) {
+      <small>Username is too small</small>
+    }
+    @if (this.usernameValid() === true) {
+      <small>This username is valid</small>
+    }
+    @if (this.usernameValid() === false) {
+      <small>This username already exists</small>
+    }
   </div>
   <div class="auth-field">
-    <label>Password</label>
-    <input type="password" placeholder="Password" />
+    <label
+      >Password
+      @if (this.registerForm.controls.password.hasError('required')) {
+        <span [style.color]="'red'" (click)="alertRequired()">*</span>
+      }
+    </label>
+    <input
+      type="password"
+      placeholder="Password"
+      id="password"
+      formControlName="password"
+      autocomplete="password"
+    />
+    @if (this.registerForm.controls.password.hasError('minlength')) {
+      <small>Password is too small</small>
+    } @else if (this.registerForm.controls.password.hasError('pattern')) {
+      <small>Passowrd must have at least one character, one number and one upper case letter</small>
+    }
   </div>
   <div class="auth-field">
-    <label>Email</label>
-    <input type="email" placeholder="Email" />
+    <label
+      >Confirm Password
+      @if (this.registerForm.controls.confirmPassword.hasError('required')) {
+        <span [style.color]="'red'" (click)="alertRequired()">*</span>
+      }
+    </label>
+    <input
+      type="password"
+      placeholder="Confirm Password"
+      id="confirmPassword"
+      formControlName="confirmPassword"
+      autocomplete="confirmPassword"
+    />
+  </div>
+  <div class="auth-field">
+    <label
+      >Email
+      @if (this.registerForm.controls.email.hasError('required')) {
+        <span [style.color]="'red'" (click)="alertRequired()">*</span>
+      }
+    </label>
+
+    <div class="auth-input">
+      <input
+        type="email"
+        placeholder="Email"
+        id="email"
+        formControlName="email"
+        (input)="emailValid.set(null)"
+      />
+      @if (this.registerForm.controls.email.valid) {
+        <button
+          class="pi pi-check-circle"
+          type="button"
+          id="checkEmail"
+          (click)="checkFields('email')"
+          [class.valid]="usernameValid() === true"
+          [class.invalid]="usernameValid() === false"
+        ></button>
+      }
+    </div>
+    @if (this.registerForm.controls.email.hasError('email')) {
+      <small>This email is not valid</small>
+    }
+    @if (this.emailValid() === true) {
+      <small>This email is valid</small>
+    }
+    @if (this.emailValid() === false) {
+      <small>This email already exists</small>
+    }
   </div>
   <button type="submit" class="auth-submit">Register</button>
 </form>
