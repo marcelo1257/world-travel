@@ -160,7 +160,7 @@ async function needImageBackground() {
       LEFT JOIN countries_images ci
           ON ci.country_id = c.id
       GROUP BY c.id
-      HAVING COUNT(ci.id) < 5`,
+      HAVING COUNT(ci.id) = 0`,
   );
 
   const _countriesToImportBackground = countriesToImportBackground.rows;
@@ -307,6 +307,6 @@ async function importBackgroundImages(_countriesPlaceholders: any) {
     const _imageFailsCount = imageFailsCount.rows[0].count;
     console.log("Countries without images: " + _imageFailsCount);
   } catch (error) {
-    console.error("Error testing Wikimedia API:", error);
+    console.error("Error calling Wikimedia API:", error);
   }
 }
