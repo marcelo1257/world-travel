@@ -1,7 +1,7 @@
 <header class="header">
   <div class="container">
     <a class="logotipo" routerLink="/" routerLinkActive="actual">
-      <img src="/icons/globe.svg" alt="World Travel" />
+      <i class="pi pi-globe"></i>
       <h1>World Travel</h1>
     </a>
 
@@ -21,14 +21,14 @@
         (click)="showAuthenticationPanel('login')"
         (click)="$event.stopPropagation()"
       >
-        Entrar
+        Login
       </button>
       <button
         class="btn-registar"
         (click)="showAuthenticationPanel('register')"
         (click)="$event.stopPropagation()"
       >
-        Registar
+        Register
       </button>
     </div>
   </div>

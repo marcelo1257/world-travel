@@ -43,3 +43,9 @@ export interface CountriesQueryParams {
   limit?: number;
   mostPopular?: boolean;
 }
+
+export interface UserInfoRegister {
+  username: string;
+  password: string;
+  email: string;
+}

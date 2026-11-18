@@ -58,8 +58,8 @@ async function initializeDatabase(): Promise<void> {
     id INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     create_at TIMESTAMP,
     username VARCHAR(50) UNIQUE,
-    email VARCHAR(150) UNIQUE NOT NULL,
     password VARCHAR(150) NOT NULL,
+    email VARCHAR(150) UNIQUE NOT NULL,
     avatar_url TEXT,
     bio TEXT
     )

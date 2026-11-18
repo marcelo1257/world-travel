@@ -1,4 +1,4 @@
-import { computed, ElementRef, inject, Injectable, signal, ViewChild } from '@angular/core';
+import { inject, Injectable, signal } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable, Subject, of } from 'rxjs';
 import { switchMap, tap, catchError } from 'rxjs/operators';

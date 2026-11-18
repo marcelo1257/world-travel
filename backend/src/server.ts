@@ -4,6 +4,7 @@ import express from "express";
 import { runDatabase } from "./database/init";
 import countriesRoutes from "./modules/countries/countries.routes";
 import countryCardRoutes from "./modules/country-card/country-card.routes";
+import authenticationRoutes from "./modules/authentication/authentication.routes";
 // import activitiesRoutes from "./modules/activities/activities.routes";
 // import routesRoutes from "./modules/routes/routes.routes";
 // import perfilRoutes from "./modules/perfil/perfil.routes";
@@ -11,6 +12,26 @@ import countryCardRoutes from "./modules/country-card/country-card.routes";
 const app = express();
 
 const PORT = 3000;
+
+app.use(express.json());
+
+app.use(
+  cors({
+    origin: "http://localhost:4200",
+  }),
+);
+
+app.use("/auth", authenticationRoutes);
+
+app.use("/api/countries", countriesRoutes);
+
+app.use("/api/countrycard", countryCardRoutes);
+
+// app.use("/api/activities", activitiesRoutes);
+
+// app.use("/api/routes", routesRoutes);
+
+// app.use("/api/perfil", perfilRoutes);
 
 async function startServer(): Promise<void> {
   try {
@@ -25,19 +46,3 @@ async function startServer(): Promise<void> {
   }
 }
 startServer();
-
-app.use(
-  cors({
-    origin: "http://localhost:4200",
-  }),
-);
-
-app.use("/api/countries", countriesRoutes);
-
-app.use("/api/countrycard", countryCardRoutes);
-
-// app.use("/api/activities", activitiesRoutes);
-
-// app.use("/api/routes", routesRoutes);
-
-// app.use("/api/perfil", perfilRoutes);
